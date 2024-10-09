@@ -10,3 +10,7 @@
   (if-let [student' (database.student/lookup-by-code (:student/code student) (d/db datomic))]
     student'
     (database.student/insert! student datomic)))
+
+(s/defn fetch-all :- [models.student/Student]
+  [datomic]
+  (database.student/all (d/db datomic)))

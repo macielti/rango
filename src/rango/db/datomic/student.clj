@@ -20,3 +20,12 @@
                  :where [?student :student/code ?code]] database code)
           ffirst
           adapters.student/database->internal))
+
+(s/defn all :- [models.student/Student]
+  [database]
+  (some-> (d/q '[:find (pull ?student [*])
+                 :in $
+                 :where [?student :student/id _]] database)
+          (->> (mapv first))
+          (->> (mapv #(dissoc % :db/id)))
+          (->> (map adapters.student/database->internal))))
