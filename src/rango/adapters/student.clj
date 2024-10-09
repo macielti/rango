@@ -26,7 +26,7 @@
                                          jt/local-date-time)))
 
 (s/defn internal->wire :- wire.out.student/Student
-  [{:student/keys [id code name class created-at]} :- models.student/Student]
+  [{:student/keys [id code name class created-at] :as student} :- models.student/Student]
   {:id         (str id)
    :code       code
    :name       name

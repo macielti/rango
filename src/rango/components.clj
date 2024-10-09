@@ -2,7 +2,12 @@
   (:require [integrant.core :as ig]
             [taoensso.timbre :as timbre]
             [rango.db.datomic.config :as database.config]
-            [rango.diplomat.http-server :as diplomat.http-server])
+            [rango.diplomat.http-server :as diplomat.http-server]
+            [common-clj.integrant-components.config]
+            [common-clj.integrant-components.datomic]
+            [common-clj.integrant-components.routes]
+            [common-clj.integrant-components.prometheus]
+            [common-clj.integrant-components.service])
   (:gen-class))
 
 (def config
