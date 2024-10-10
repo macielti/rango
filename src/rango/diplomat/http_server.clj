@@ -22,4 +22,8 @@
 
              ["/api/reservations"
               :post [(common-traceability/http-with-correlation-id diplomat.http-server.reservation/create-reservation!)]
-              :route-name :create-reservation]])
+              :route-name :create-reservation]
+
+             ["/api/reservations/menus/:menu-id"
+              :get [(common-traceability/http-with-correlation-id diplomat.http-server.reservation/fetch-reservations-by-menu)]
+              :route-name :fetch-reservations-by-menu]])

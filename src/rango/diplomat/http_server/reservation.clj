@@ -11,3 +11,10 @@
    :body   {:reservation (-> (controllers.reservation/create! (:student-code reservation)
                                                               (UUID/fromString (:menu-id reservation)) datomic)
                              adapters.reservation/internal->wire)}})
+
+(s/defn fetch-reservations-by-menu
+  [{{:keys [menu-id]} :path-params
+    {:keys [datomic]} :components}]
+  {:status 200
+   :body   {:reservations (->> (controllers.reservation/fetch-by-menu (UUID/fromString menu-id) datomic)
+                               (map adapters.reservation/internal->wire))}})

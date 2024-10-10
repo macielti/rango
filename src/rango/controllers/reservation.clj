@@ -14,3 +14,8 @@
   (let [student (database.student/lookup-by-code student-code (d/db datomic))
         menu (database.menu/lookup menu-id (d/db datomic))]
     (database.reservation/insert! (logic.reservation/->reservation student menu) datomic)))
+
+(s/defn fetch-by-menu :- [models.reservation/Reservation]
+  [menu-id :- s/Uuid
+   datomic]
+  (database.reservation/by-menu menu-id (d/db datomic)))
