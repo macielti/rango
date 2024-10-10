@@ -1,6 +1,7 @@
 (ns rango.diplomat.http-server
   (:require [common-clj.traceability.core :as common-traceability]
             [rango.diplomat.http-server.menu :as diplomat.http-server.menu]
+            [rango.diplomat.http-server.reservation :as diplomat.http-server.reservation]
             [rango.diplomat.http-server.student :as diplomat.http-server.student]))
 
 (def routes [["/api/students"
@@ -17,4 +18,8 @@
 
              ["/api/menus"
               :get [(common-traceability/http-with-correlation-id diplomat.http-server.menu/fetch-all)]
-              :route-name :fetch-all-menus]])
+              :route-name :fetch-all-menus]
+
+             ["/api/reservations"
+              :post [(common-traceability/http-with-correlation-id diplomat.http-server.reservation/create-reservation!)]
+              :route-name :create-reservation]])

@@ -12,6 +12,15 @@
       :entity
       adapters.menu/database->internal))
 
+(s/defn lookup :- (s/maybe models.menu/Menu)
+  [menu-id :- s/Uuid
+   database]
+  (some-> (d/q '[:find (pull ?menu [*])
+                 :in $ ?menu-id
+                 :where [?menu :menu/id ?menu-id]] database menu-id)
+          ffirst
+          adapters.menu/database->internal))
+
 (s/defn all :- [models.menu/Menu]
   [database]
   (some-> (d/q '[:find (pull ?menu [*])
