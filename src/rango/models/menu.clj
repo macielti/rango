@@ -1,8 +1,6 @@
 (ns rango.models.menu
-  (:require
-   [schema.core :as s])
-  (:import
-   (java.time LocalDate LocalDateTime)))
+  (:require [schema.core :as s])
+  (:import (java.time LocalDate LocalDateTime)))
 
 (def menu
   {:menu/id             s/Uuid

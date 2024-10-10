@@ -1,9 +1,7 @@
 (ns rango.wire.datomic.menu
-  (:require
-   [rango.models.menu :as models.menu]
-   [schema.core :as s])
-  (:import
-   (java.util Date)))
+  (:require [rango.models.menu :as models.menu]
+            [schema.core :as s])
+  (:import (java.util Date)))
 
 (def menu
   [{:db/ident       :menu/id

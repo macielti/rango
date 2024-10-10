@@ -1,8 +1,8 @@
 (ns rango.controllers.menu
   (:require [datomic.api :as d]
+            [rango.db.datomic.menu :as database.menu]
             [rango.models.menu :as models.menu]
-            [schema.core :as s]
-            [rango.db.datomic.menu :as database.menu]))
+            [schema.core :as s]))
 
 (s/defn create! :- models.menu/Menu
   [menu :- models.menu/Menu

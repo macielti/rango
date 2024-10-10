@@ -1,18 +1,16 @@
 (ns rango.adapters.menu
-  (:require
-   [java-time.api :as jt]
-   [rango.models.menu :as models.menu]
-   [rango.wire.datomic.menu :as wire.datomic.menu]
-   [rango.wire.in.menu :as wire.in.menu]
-   [rango.wire.out.menu :as wire.out.menu]
-   [schema.core :as s]))
+  (:require [java-time.api :as jt]
+            [rango.models.menu :as models.menu]
+            [rango.wire.datomic.menu :as wire.datomic.menu]
+            [rango.wire.in.menu :as wire.in.menu]
+            [rango.wire.out.menu :as wire.out.menu]
+            [schema.core :as s]))
 
 (s/defn wire->internal :- models.menu/Menu
   [{:keys [reference-date description]} :- wire.in.menu/Menu]
   {:menu/id             (random-uuid)
    :menu/description    description
-   :menu/reference-date (-> (jt/local-date-time reference-date)
-                            jt/local-date)
+   :menu/reference-date (jt/local-date reference-date)
    :menu/created-at     (jt/local-date-time)})
 
 (s/defn internal->database :- wire.datomic.menu/Menu

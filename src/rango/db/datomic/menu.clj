@@ -2,8 +2,8 @@
   (:require [common-clj.integrant-components.datomic :as component.datomic]
             [datomic.api :as d]
             [rango.adapters.menu :as adapters.menu]
-            [schema.core :as s]
-            [rango.models.menu :as models.menu]))
+            [rango.models.menu :as models.menu]
+            [schema.core :as s]))
 
 (s/defn insert! :- models.menu/Menu
   [menu :- models.menu/Menu

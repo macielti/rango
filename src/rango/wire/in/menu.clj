@@ -1,6 +1,5 @@
 (ns rango.wire.in.menu
-  (:require
-   [schema.core :as s]))
+  (:require [schema.core :as s]))
 
 (def menu
   {:reference-date s/Str

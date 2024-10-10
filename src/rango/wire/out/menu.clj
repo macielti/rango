@@ -1,6 +1,5 @@
 (ns rango.wire.out.menu
-  (:require
-   [schema.core :as s]))
+  (:require [schema.core :as s]))
 
 (def menu
   {:id             s/Str

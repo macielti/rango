@@ -1,8 +1,7 @@
 (ns rango.diplomat.http-server
-  (:require
-    [common-clj.traceability.core :as common-traceability]
-    [rango.diplomat.http-server.student :as diplomat.http-server.student]
-    [rango.diplomat.http-server.menu :as diplomat.http-server.menu]))
+  (:require [common-clj.traceability.core :as common-traceability]
+            [rango.diplomat.http-server.menu :as diplomat.http-server.menu]
+            [rango.diplomat.http-server.student :as diplomat.http-server.student]))
 
 (def routes [["/api/students"
               :post [(common-traceability/http-with-correlation-id diplomat.http-server.student/create-student!)]

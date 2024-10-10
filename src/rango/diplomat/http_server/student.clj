@@ -1,8 +1,7 @@
 (ns rango.diplomat.http-server.student
-  (:require
-   [rango.adapters.student :as adapters.student]
-   [rango.controllers.student :as controllers.student]
-   [schema.core :as s]))
+  (:require [rango.adapters.student :as adapters.student]
+            [rango.controllers.student :as controllers.student]
+            [schema.core :as s]))
 
 (s/defn create-student!
   [{{:keys [student]} :json-params

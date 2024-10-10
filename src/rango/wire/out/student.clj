@@ -1,6 +1,5 @@
 (ns rango.wire.out.student
-  (:require
-   [schema.core :as s]))
+  (:require [schema.core :as s]))
 
 (def student
   {:id         s/Str

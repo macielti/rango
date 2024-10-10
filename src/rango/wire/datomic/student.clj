@@ -1,9 +1,7 @@
 (ns rango.wire.datomic.student
-  (:require
-   [rango.models.student :as models.student]
-   [schema.core :as s])
-  (:import
-   (java.util Date)))
+  (:require [rango.models.student :as models.student]
+            [schema.core :as s])
+  (:import (java.util Date)))
 
 (def student
   [{:db/ident       :student/id

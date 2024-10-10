@@ -1,7 +1,7 @@
 (ns rango.diplomat.http-server.menu
-  (:require [schema.core :as s]
-            [rango.adapters.menu :as adapters.menu]
-            [rango.controllers.menu :as controllers.menu]))
+  (:require [rango.adapters.menu :as adapters.menu]
+            [rango.controllers.menu :as controllers.menu]
+            [schema.core :as s]))
 
 (s/defn create-menu!
   [{{:keys [menu]}    :json-params
