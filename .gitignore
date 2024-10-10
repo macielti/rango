@@ -14,3 +14,5 @@ pom.xml.asc
 /.idea/
 /rango.iml
 /resources/config.edn
+/.clj-kondo/
+/.lsp/.cache/
