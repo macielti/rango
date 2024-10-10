@@ -1,11 +1,12 @@
 (ns rango.adapters.student
-  (:require [java-time.api :as jt]
-            [schema.core :as s]
-            [rango.models.student :as models.student]
-            [rango.wire.in.student :as wire.in.student]
-            [camel-snake-kebab.core :as csk]
-            [rango.wire.datomic.student :as wire.datomic.student]
-            [rango.wire.out.student :as wire.out.student]))
+  (:require
+   [camel-snake-kebab.core :as csk]
+   [java-time.api :as jt]
+   [rango.models.student :as models.student]
+   [rango.wire.datomic.student :as wire.datomic.student]
+   [rango.wire.in.student :as wire.in.student]
+   [rango.wire.out.student :as wire.out.student]
+   [schema.core :as s]))
 
 (s/defn wire->internal :- models.student/Student
   [{:keys [code name class]} :- wire.in.student/Student]

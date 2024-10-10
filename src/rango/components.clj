@@ -1,13 +1,14 @@
 (ns rango.components
-  (:require [integrant.core :as ig]
-            [taoensso.timbre :as timbre]
-            [rango.db.datomic.config :as database.config]
-            [rango.diplomat.http-server :as diplomat.http-server]
-            [common-clj.integrant-components.config]
-            [common-clj.integrant-components.datomic]
-            [common-clj.integrant-components.routes]
-            [common-clj.integrant-components.prometheus]
-            [common-clj.integrant-components.service])
+  (:require
+   [common-clj.integrant-components.config]
+   [common-clj.integrant-components.datomic]
+   [common-clj.integrant-components.prometheus]
+   [common-clj.integrant-components.routes]
+   [common-clj.integrant-components.service]
+   [integrant.core :as ig]
+   [rango.db.datomic.config :as database.config]
+   [rango.diplomat.http-server :as diplomat.http-server]
+   [taoensso.timbre :as timbre])
   (:gen-class))
 
 (def config

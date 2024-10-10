@@ -1,6 +1,8 @@
 (ns rango.models.student
-  (:require [schema.core :as s])
-  (:import (java.time LocalDateTime)))
+  (:require
+   [schema.core :as s])
+  (:import
+   (java.time LocalDateTime)))
 
 (def student
   {:student/id         s/Uuid

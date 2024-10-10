@@ -1,9 +1,10 @@
 (ns rango.db.datomic.student
-  (:require [rango.adapters.student :as adapters.student]
-            [rango.models.student :as models.student]
-            [common-clj.integrant-components.datomic :as component.datomic]
-            [datomic.api :as d]
-            [schema.core :as s]))
+  (:require
+   [common-clj.integrant-components.datomic :as component.datomic]
+   [datomic.api :as d]
+   [rango.adapters.student :as adapters.student]
+   [rango.models.student :as models.student]
+   [schema.core :as s]))
 
 (s/defn insert! :- models.student/Student
   [student :- models.student/Student
