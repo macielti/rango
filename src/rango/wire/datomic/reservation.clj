@@ -1,5 +1,6 @@
 (ns rango.wire.datomic.reservation
-  (:require [schema.core :as s])
+  (:require [rango.models.reservation :as models.reservation]
+            [schema.core :as s])
   (:import (java.util Date)))
 
 (def reservation
@@ -22,4 +23,5 @@
     :db/doc         "When the reservation was placed"}])
 
 (s/defschema Reservation
-  (assoc reservation :reservation/created-at Date))
+  (assoc models.reservation/reservation
+         :reservation/created-at Date))

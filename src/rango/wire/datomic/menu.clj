@@ -23,6 +23,6 @@
     :db/doc         "When the menu was created"}])
 
 (s/defschema Menu
-  (assoc models.menu/Menu
+  (assoc models.menu/menu
          :menu/created-at Date
          :menu/reference-date Date))
