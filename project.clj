@@ -11,7 +11,7 @@
 
   :dependencies [[org.clojure/clojure "1.11.1"]
                  [org.postgresql/postgresql "42.7.4"]
-                 [net.clojars.macielti/common-clj "30.63.70" :exclusions [datalevin]]]
+                 [net.clojars.macielti/common-clj "d0747863a782" :exclusions [datalevin]]]
 
   :aliases {"clean-ns"     ["clojure-lsp" "clean-ns" "--dry"] ;; check if namespaces are clean
             "format"       ["clojure-lsp" "format" "--dry"] ;; check if namespaces are formatted
