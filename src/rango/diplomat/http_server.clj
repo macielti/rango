@@ -33,4 +33,9 @@
 
              ["/api/reservations/menus/:menu-id"
               :get [(common-traceability/http-with-correlation-id diplomat.http-server.reservation/fetch-reservations-by-menu)]
-              :route-name :fetch-reservations-by-menu]])
+              :route-name :fetch-reservations-by-menu]
+
+             ["/api/students/reservations/menus/:menu-id"
+              :get [(io.interceptors.customer/required-roles-interceptor [:admin])
+                    (common-traceability/http-with-correlation-id diplomat.http-server.student/fetch-students-by-reservations-menu)]
+              :route-name :fetch-students-by-menu-reservations]])

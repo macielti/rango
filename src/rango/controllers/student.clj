@@ -14,3 +14,8 @@
 (s/defn fetch-all :- [models.student/Student]
   [datomic]
   (database.student/all (d/db datomic)))
+
+(s/defn fetch-students-by-menu-reservations :- [models.student/Student]
+  [menu-id :- s/Uuid
+   datomic]
+  (database.student/by-menu-reservations menu-id (d/db datomic)))
