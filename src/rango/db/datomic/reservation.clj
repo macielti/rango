@@ -21,3 +21,15 @@
           (->> (mapv first))
           (->> (mapv #(dissoc % :db/id)))
           (->> (map adapters.reservation/database->internal))))
+
+(s/defn lookup-by-student-and-menu :- (s/maybe models.reservation/Reservation)
+  [student-id :- s/Uuid
+   menu-id :- s/Uuid
+   database]
+  (some-> (d/q '[:find (pull ?reservation [*])
+                 :in $ ?student-id ?menu-id
+                 :where [?reservation :reservation/student-id ?student-id]
+                 [?reservation :reservation/menu-id ?menu-id]] database student-id menu-id)
+          ffirst
+          (dissoc :db/id)
+          adapters.reservation/database->internal))
