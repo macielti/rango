@@ -15,10 +15,9 @@
 (s/defn lookup :- (s/maybe models.menu/Menu)
   [menu-id :- s/Uuid
    database]
-  (some-> (d/q '[:find (pull ?menu [*])
-                 :in $ ?menu-id
-                 :where [?menu :menu/id ?menu-id]] database menu-id)
-          ffirst
+  (some-> (d/entid database [:menu/id menu-id])
+          (->> (d/pull database '[*]))
+          (dissoc :db/id)
           adapters.menu/database->internal))
 
 (s/defn all :- [models.menu/Menu]

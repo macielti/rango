@@ -18,7 +18,7 @@
 (s/defn fetch-students-by-menu-reservations :- [models.student/Student]
   [menu-id :- s/Uuid
    datomic]
-  (database.student/by-menu-reservations menu-id (d/db datomic)))
+  (database.student/by-menu-reservation menu-id (d/db datomic)))
 
 (s/defn retract!
   [student-id :- s/Uuid
