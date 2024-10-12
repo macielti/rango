@@ -1,6 +1,5 @@
 (ns fixtures.menu
-  (:require [clojure.test :refer :all]
-            [common-clj.test.helper.schema :as test.helper.schema]
+  (:require [common-clj.test.helper.schema :as test.helper.schema]
             [java-time.api :as jt]
             [rango.models.menu :as models.menu]
             [rango.wire.datomic.menu :as wire.datomic.menu]

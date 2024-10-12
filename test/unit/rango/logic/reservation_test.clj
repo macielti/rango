@@ -1,11 +1,11 @@
 (ns rango.logic.reservation-test
-  (:require [clojure.test :refer :all]
-            [java-time.api :as jt]
-            [rango.logic.reservation :as logic.reservation]
-            [matcher-combinators.test :refer [match?]]
-            [schema.test :as s]
+  (:require [clojure.test :refer [is testing]]
+            [fixtures.menu]
             [fixtures.student]
-            [fixtures.menu]))
+            [java-time.api :as jt]
+            [matcher-combinators.test :refer [match?]]
+            [rango.logic.reservation :as logic.reservation]
+            [schema.test :as s]))
 
 (s/deftest ->reservation-test
   (testing "that we are able to create a reservation"

@@ -1,11 +1,11 @@
 (ns rango.adapters.student-test
-  (:require [clojure.test :refer :all]
-            [java-time.api :as jt]
-            [schema.test :as s]
-            [rango.adapters.student :as adapters.student]
+  (:require [clj-uuid]
+            [clojure.test :refer [is testing]]
             [fixtures.student]
-            [clj-uuid]
-            [matcher-combinators.test :refer [match?]]))
+            [java-time.api :as jt]
+            [matcher-combinators.test :refer [match?]]
+            [rango.adapters.student :as adapters.student]
+            [schema.test :as s]))
 
 (s/deftest wire->internal-test
   (testing "That we are able to convert a wire student to an internal student"

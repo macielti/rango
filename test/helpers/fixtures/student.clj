@@ -1,6 +1,5 @@
 (ns fixtures.student
-  (:require [clojure.test :refer :all]
-            [common-clj.test.helper.schema :as test.helper.schema]
+  (:require [common-clj.test.helper.schema :as test.helper.schema]
             [rango.models.student :as models.student]
             [rango.wire.datomic.student :as wire.datomic.student]
             [rango.wire.in.student :as wire.in.student]))

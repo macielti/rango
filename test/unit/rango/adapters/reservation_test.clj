@@ -1,12 +1,12 @@
 (ns rango.adapters.reservation-test
-  (:require [clojure.test :refer :all]
-            [java-time.api :as jt]
-            [rango.adapters.reservation :as adapters.reservation]
-            [matcher-combinators.test :refer [match?]]
-            [fixtures.reservation]
+  (:require [clj-uuid]
+            [clojure.test :refer [is testing]]
             [fixtures.menu]
-            [schema.test :as s]
-            [clj-uuid]))
+            [fixtures.reservation]
+            [java-time.api :as jt]
+            [matcher-combinators.test :refer [match?]]
+            [rango.adapters.reservation :as adapters.reservation]
+            [schema.test :as s]))
 
 (s/deftest internal->database-test
   (testing "That we are able to convert an internal reservation to a database reservation"

@@ -1,13 +1,13 @@
 (ns fixtures.reservation
-  (:require [clojure.test :refer :all]
-            [common-clj.test.helper.schema :as test.helper.schema]
-            [rango.wire.datomic.reservation :as wire.datomic.reservation]
-            [fixtures.menu]))
+  (:require [common-clj.test.helper.schema :as test.helper.schema]
+            [fixtures.menu]
+            [rango.models.reservation :as models.reservation]
+            [rango.wire.datomic.reservation :as wire.datomic.reservation]))
 
 (defonce reservation-id (random-uuid))
 
 (def reservation
-  (test.helper.schema/generate rango.models.reservation/Reservation
+  (test.helper.schema/generate models.reservation/Reservation
                                {:reservation/id      reservation-id
                                 :reservation/menu-id fixtures.menu/menu-id}))
 

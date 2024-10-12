@@ -1,5 +1,5 @@
 (ns rango.db.datomic.student-test
-  (:require [clojure.test :refer :all]
+  (:require [clojure.test :refer [is testing]]
             [common-clj.integrant-components.datomic :as component.datomic]
             [common-clj.test.helper.schema :as test.helper.schema]
             [datomic.api :as d]

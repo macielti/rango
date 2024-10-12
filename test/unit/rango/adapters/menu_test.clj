@@ -1,10 +1,10 @@
 (ns rango.adapters.menu-test
-  (:require [clojure.test :refer :all]
-            [java-time.api :as jt]
-            [rango.adapters.menu :as adapters.menu]
-            [matcher-combinators.test :refer [match?]]
+  (:require [clj-uuid]
+            [clojure.test :refer [is testing]]
             [fixtures.menu]
-            [clj-uuid]
+            [java-time.api :as jt]
+            [matcher-combinators.test :refer [match?]]
+            [rango.adapters.menu :as adapters.menu]
             [schema.test :as s]))
 
 (s/deftest wire->internal-test
