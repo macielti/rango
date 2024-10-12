@@ -3,10 +3,10 @@
             [common-clj.integrant-components.datomic :as component.datomic]
             [common-clj.test.helper.schema :as test.helper.schema]
             [datomic.api :as d]
-            [rango.db.datomic.config :as database.config]
-            [rango.db.datomic.student :as database.student]
             [fixtures.student]
             [matcher-combinators.test :refer [match?]]
+            [rango.db.datomic.config :as database.config]
+            [rango.db.datomic.student :as database.student]
             [rango.models.student :as models.student]
             [schema.test :as s]))
 

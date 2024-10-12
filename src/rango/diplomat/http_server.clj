@@ -30,7 +30,8 @@
               :route-name :create-menu]
 
              ["/api/menus/:menu-id"
-              :delete [(io.interceptors.customer/required-roles-interceptor [:admin])
+              :delete [io.interceptors.customer/identity-interceptor
+                       (io.interceptors.customer/required-roles-interceptor [:admin])
                        (common-traceability/http-with-correlation-id diplomat.http-server.menu/retract-menu!)]
               :route-name :retract-menu]
 

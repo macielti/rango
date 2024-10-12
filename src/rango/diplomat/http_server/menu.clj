@@ -23,4 +23,4 @@
     {:keys [datomic]} :components}]
   (controllers.menu/retract! (UUID/fromString menu-id) datomic)
   {:status 200
-   :body   nil})
+   :body   {}})

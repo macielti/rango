@@ -30,4 +30,4 @@
     {:keys [datomic]}    :components}]
   (controllers.student/retract! (UUID/fromString student-id) datomic)
   {:status 200
-   :body   nil})
+   :body   {}})

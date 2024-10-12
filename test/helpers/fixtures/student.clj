@@ -1,7 +1,7 @@
 (ns fixtures.student
   (:require [clojure.test :refer :all]
-            [rango.models.student :as models.student]
-            [common-clj.test.helper.schema :as test.helper.schema]))
+            [common-clj.test.helper.schema :as test.helper.schema]
+            [rango.models.student :as models.student]))
 
 (defonce student-id (random-uuid))
 (def student-name "Manuel Gomes")
