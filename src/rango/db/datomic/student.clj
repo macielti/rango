@@ -41,3 +41,9 @@
           (->> (mapv first))
           (->> (mapv #(dissoc % :db/id)))
           (->> (map adapters.student/database->internal))))
+
+(s/defn retract!
+  [student-id :- s/Uuid
+   datomic]
+  (let [student-entid (d/entid (d/db datomic) [:student/id student-id])]
+    @(d/transact datomic [[:db.fn/retractEntity student-entid]])))

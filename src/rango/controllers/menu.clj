@@ -12,3 +12,8 @@
 (s/defn fetch-all :- [models.menu/Menu]
   [datomic]
   (database.menu/all (d/db datomic)))
+
+(s/defn retract!
+  [menu-id :- s/Uuid
+   datomic]
+  (database.menu/retract! menu-id datomic))

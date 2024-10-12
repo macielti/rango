@@ -19,3 +19,8 @@
   [menu-id :- s/Uuid
    datomic]
   (database.student/by-menu-reservations menu-id (d/db datomic)))
+
+(s/defn retract!
+  [student-id :- s/Uuid
+   datomic]
+  (database.student/retract! student-id datomic))

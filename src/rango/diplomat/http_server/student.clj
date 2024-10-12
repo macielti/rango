@@ -24,3 +24,10 @@
   {:status 200
    :body   {:reservations (->> (controllers.student/fetch-students-by-menu-reservations (UUID/fromString menu-id) datomic)
                                (map adapters.student/internal->wire))}})
+
+(s/defn retract-student!
+  [{{:keys [student-id]} :path-params
+    {:keys [datomic]}    :components}]
+  (controllers.student/retract! (UUID/fromString student-id) datomic)
+  {:status 200
+   :body   nil})

@@ -29,3 +29,9 @@
           (->> (mapv first))
           (->> (mapv #(dissoc % :db/id)))
           (->> (map adapters.menu/database->internal))))
+
+(s/defn retract!
+  [menu-id :- s/Uuid
+   datomic]
+  (let [menu-entid (d/entid (d/db datomic) [:menu/id menu-id])]
+    @(d/transact datomic [[:db.fn/retractEntity menu-entid]])))

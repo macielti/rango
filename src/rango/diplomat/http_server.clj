@@ -17,11 +17,22 @@
                     (common-traceability/http-with-correlation-id diplomat.http-server.student/fetch-all)]
               :route-name :fetch-all-students]
 
+             ["/api/students/:student-id"
+              :delete [io.interceptors.customer/identity-interceptor
+                       (io.interceptors.customer/required-roles-interceptor [:admin])
+                       (common-traceability/http-with-correlation-id diplomat.http-server.student/retract-student!)]
+              :route-name :retract-student]
+
              ["/api/menus"
               :post [io.interceptors.customer/identity-interceptor
                      (io.interceptors.customer/required-roles-interceptor [:admin])
                      (common-traceability/http-with-correlation-id diplomat.http-server.menu/create-menu!)]
               :route-name :create-menu]
+
+             ["/api/menus/:menu-id"
+              :delete [(io.interceptors.customer/required-roles-interceptor [:admin])
+                       (common-traceability/http-with-correlation-id diplomat.http-server.menu/retract-menu!)]
+              :route-name :retract-menu]
 
              ["/api/menus"
               :get [(common-traceability/http-with-correlation-id diplomat.http-server.menu/fetch-all)]
