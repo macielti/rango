@@ -19,6 +19,7 @@
                  :in $ ?code
                  :where [?student :student/code ?code]] database code)
           ffirst
+          (dissoc :db/id)
           adapters.student/database->internal))
 
 (s/defn all :- [models.student/Student]
@@ -30,7 +31,7 @@
           (->> (mapv #(dissoc % :db/id)))
           (->> (map adapters.student/database->internal))))
 
-(s/defn by-menu-reservations :- [models.student/Student]
+(s/defn by-menu-reservation :- [models.student/Student]
   [menu-id :- s/Uuid
    database]
   (some-> (d/q '[:find (pull ?student [*])
