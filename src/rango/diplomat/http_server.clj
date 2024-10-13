@@ -52,8 +52,9 @@
                     (common-traceability/http-with-correlation-id diplomat.http-server.reservation/fetch-reservations-by-menu)]
               :route-name :fetch-reservations-by-menu]
 
-             ["/api/students/reservations/menus/:menu-id"
-              :get [(io.interceptors.customer/required-roles-interceptor [:admin])
+             ["/api/students-by-menu-reservations/:menu-id"
+              :get [io.interceptors.customer/identity-interceptor
+                    (io.interceptors.customer/required-roles-interceptor [:admin])
                     interceptors.menu/menu-resource-existence-interceptor-check
                     (common-traceability/http-with-correlation-id diplomat.http-server.student/fetch-students-by-reservations-menu)]
               :route-name :fetch-students-by-menu-reservations]])
