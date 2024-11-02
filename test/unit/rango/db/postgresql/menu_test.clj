@@ -1,10 +1,10 @@
 (ns rango.db.postgresql.menu-test
   (:require [clojure.test :refer :all]
-            [common-clj.test.helper.schema :as test.helper.schema]
             [common-clj.integrant-components.postgresql :as postgresql]
+            [common-clj.test.helper.schema :as test.helper.schema]
             [java-time.api :as jt]
-            [rango.db.postgresql.menu :as database.menu]
             [matcher-combinators.test :refer [match?]]
+            [rango.db.postgresql.menu :as database.menu]
             [rango.models.menu :as models.menu]
             [schema.test :as s]))
 

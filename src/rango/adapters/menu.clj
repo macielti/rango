@@ -17,15 +17,15 @@
   [{:menu/keys [created-at reference-date] :as menu} :- models.menu/Menu]
   (assoc menu :menu/created-at (-> (jt/zoned-date-time created-at (jt/zone-id "UTC"))
                                    jt/java-date)
-              :menu/reference-date (-> (jt/zoned-date-time reference-date (jt/zone-id "UTC"))
-                                       jt/java-date)))
+         :menu/reference-date (-> (jt/zoned-date-time reference-date (jt/zone-id "UTC"))
+                                  jt/java-date)))
 
 (s/defn database->internal :- models.menu/Menu
   [{:menu/keys [created-at reference-date] :as menu} :- wire.datomic.menu/Menu]
   (assoc menu :menu/created-at (-> (jt/zoned-date-time created-at (jt/zone-id "UTC"))
                                    jt/local-date-time)
-              :menu/reference-date (-> (jt/zoned-date-time reference-date (jt/zone-id "UTC"))
-                                       jt/local-date)))
+         :menu/reference-date (-> (jt/zoned-date-time reference-date (jt/zone-id "UTC"))
+                                  jt/local-date)))
 
 (s/defn internal->wire :- wire.out.menu/Menu
   [{:menu/keys [id description reference-date created-at]} :- models.menu/Menu]

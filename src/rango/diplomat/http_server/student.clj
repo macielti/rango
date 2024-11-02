@@ -1,6 +1,5 @@
 (ns rango.diplomat.http-server.student
-  (:require [pg.pool :as pool]
-            [rango.adapters.student :as adapters.student]
+  (:require [rango.adapters.student :as adapters.student]
             [rango.controllers.student :as controllers.student]
             [schema.core :as s])
   (:import (java.util UUID)))

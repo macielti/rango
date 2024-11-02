@@ -3,9 +3,9 @@
             [common-clj.integrant-components.postgresql :as postgresql]
             [common-clj.test.helper.schema :as test.helper.schema]
             [java-time.api :as jt]
+            [matcher-combinators.test :refer [match?]]
             [rango.db.postgresql.reservation :as database.reservation]
             [rango.models.reservation :as models.reservation]
-            [matcher-combinators.test :refer [match?]]
             [schema.test :as s]))
 
 (def menu-id (random-uuid))

@@ -1,9 +1,9 @@
 (ns rango.db.postgresql.student
   (:require [camel-snake-kebab.core :as csk]
             [pg.core :as pg]
-            [schema.core :as s]
+            [rango.adapters.student :as adapters.student]
             [rango.models.student :as models.student]
-            [rango.adapters.student :as adapters.student]))
+            [schema.core :as s]))
 
 (s/defn insert! :- models.student/Student
   [{:student/keys [id code name class created-at]} :- models.student/Student

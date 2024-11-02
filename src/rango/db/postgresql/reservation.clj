@@ -1,8 +1,8 @@
 (ns rango.db.postgresql.reservation
   (:require [pg.core :as pg]
             [rango.adapters.reservation :as adapters.reservation]
-            [schema.core :as s]
-            [rango.models.reservation :as models.reservation]))
+            [rango.models.reservation :as models.reservation]
+            [schema.core :as s]))
 
 (s/defn insert! :- models.reservation/Reservation
   [{:reservation/keys [id student-id menu-id created-at]} :- models.reservation/Reservation

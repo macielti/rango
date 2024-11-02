@@ -1,8 +1,8 @@
 (ns rango.db.postgresql.menu
   (:require [pg.core :as pg]
             [rango.adapters.menu :as adapters.menu]
-            [schema.core :as s]
-            [rango.models.menu :as models.menu]))
+            [rango.models.menu :as models.menu]
+            [schema.core :as s]))
 
 (s/defn insert! :- models.menu/Menu
   [{:menu/keys [id reference-date description created-at]} :- models.menu/Menu

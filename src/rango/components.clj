@@ -1,11 +1,11 @@
 (ns rango.components
   (:require [common-clj.integrant-components.config]
             [common-clj.integrant-components.datomic]
+            [common-clj.integrant-components.postgresql]
             [common-clj.integrant-components.prometheus]
             [common-clj.integrant-components.routes]
             [common-clj.integrant-components.service]
             [common-clj.porteiro.admin]
-            [common-clj.integrant-components.postgresql]
             [common-clj.porteiro.diplomat.http-server :as porteiro.diplomat.http-server]
             [integrant.core :as ig]
             [rango.diplomat.http-server :as diplomat.http-server]

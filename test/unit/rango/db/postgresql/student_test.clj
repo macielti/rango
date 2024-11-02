@@ -3,11 +3,11 @@
             [common-clj.integrant-components.postgresql :as postgresql]
             [common-clj.test.helper.schema :as test.helper.schema]
             [java-time.api :as jt]
-            [rango.db.postgresql.student :as database.student]
-            [rango.db.postgresql.reservation :as database.reservation]
-            [rango.models.student :as models.student]
             [matcher-combinators.test :refer [match?]]
+            [rango.db.postgresql.reservation :as database.reservation]
+            [rango.db.postgresql.student :as database.student]
             [rango.models.reservation :as models.reservation]
+            [rango.models.student :as models.student]
             [schema.test :as s]))
 
 (def student-code "74b4814a")
