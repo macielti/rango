@@ -1,3 +1,4 @@
 {:auto-add-ns-to-new-files? true
  :clean                     {:ns-inner-blocks-indentation   :same-line
-                             :ns-import-classes-indentation :same-line}}
+                             :ns-import-classes-indentation :same-line}
+ :lint-as                   {pg.pool/with-connection clojure.core/let}}
