@@ -14,9 +14,9 @@
   (pool/with-connection [database-conn postgresql]
     (let [student (database.student/lookup-by-code student-code database-conn)
           menu (database.menu/lookup menu-id database-conn)]
-      (if-let [reservation (database.reservation/lookup-by-student-and-menu (:student/id student) menu-id postgresql)]
+      (if-let [reservation (database.reservation/lookup-by-student-and-menu (:student/id student) menu-id database-conn)]
         reservation
-        (database.reservation/insert! (logic.reservation/->reservation student menu) postgresql)))))
+        (database.reservation/insert! (logic.reservation/->reservation student menu) database-conn)))))
 
 (s/defn fetch-by-menu :- [models.reservation/Reservation]
   [menu-id :- s/Uuid
