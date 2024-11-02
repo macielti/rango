@@ -6,15 +6,15 @@
 
 (s/defn create-reservation!
   [{{:keys [reservation]} :json-params
-    {:keys [datomic]}     :components}]
+    {:keys [postgresql]}  :components}]
   {:status 200
    :body   {:reservation (-> (controllers.reservation/create! (:student-code reservation)
-                                                              (UUID/fromString (:menu-id reservation)) datomic)
+                                                              (UUID/fromString (:menu-id reservation)) postgresql)
                              adapters.reservation/internal->wire)}})
 
 (s/defn fetch-reservations-by-menu
   [{{:keys [menu-id]} :path-params
-    {:keys [datomic]} :components}]
+    {:keys [postgresql]} :components}]
   {:status 200
-   :body   {:reservations (->> (controllers.reservation/fetch-by-menu (UUID/fromString menu-id) datomic)
+   :body   {:reservations (->> (controllers.reservation/fetch-by-menu (UUID/fromString menu-id) postgresql)
                                (map adapters.reservation/internal->wire))}})

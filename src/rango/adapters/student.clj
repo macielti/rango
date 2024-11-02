@@ -5,6 +5,7 @@
             [rango.wire.datomic.student :as wire.datomic.student]
             [rango.wire.in.student :as wire.in.student]
             [rango.wire.out.student :as wire.out.student]
+            [camel-snake-kebab.core :as csk]
             [schema.core :as s]))
 
 (s/defn wire->internal :- models.student/Student
@@ -32,3 +33,11 @@
    :name       name
    :class      (clojure.core/name class)
    :created-at (str created-at)})
+
+(s/defn postgresql->internal :- models.student/Student
+  [{:keys [id code name class created_at]}]
+  {:student/id         id
+   :student/code       code
+   :student/name       name
+   :student/class      (csk/->kebab-case-keyword class)
+   :student/created-at created_at})

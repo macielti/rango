@@ -1,19 +1,22 @@
 (ns rango.controllers.menu
-  (:require [datomic.api :as d]
-            [rango.db.datomic.menu :as database.menu]
+  (:require [pg.pool :as pool]
+            [rango.db.postgresql.menu :as database.menu]
             [rango.models.menu :as models.menu]
             [schema.core :as s]))
 
 (s/defn create! :- models.menu/Menu
   [menu :- models.menu/Menu
-   datomic]
-  (database.menu/insert! menu datomic))
+   postgresql]
+  (pool/with-connection [database-conn postgresql]
+    (database.menu/insert! menu database-conn)))
 
 (s/defn fetch-all :- [models.menu/Menu]
-  [datomic]
-  (database.menu/all (d/db datomic)))
+  [postgresql]
+  (pool/with-connection [database-conn postgresql]
+    (database.menu/all database-conn)))
 
 (s/defn retract!
   [menu-id :- s/Uuid
-   datomic]
-  (database.menu/retract! menu-id datomic))
+   postgresql]
+  (pool/with-connection [database-conn postgresql]
+    (database.menu/retract! menu-id database-conn)))
