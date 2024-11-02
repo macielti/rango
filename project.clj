@@ -10,25 +10,25 @@
   :plugins [[com.github.clojure-lsp/lein-clojure-lsp "1.4.2"]]
 
   :dependencies [[org.clojure/clojure "1.11.1"]
-                 [org.postgresql/postgresql "42.7.4"]
-                 [net.clojars.macielti/common-clj "30.68.70" :exclusions [datalevin datomic]]
-                 [danlentz/clj-uuid "0.1.9"]]
+                 [net.clojars.macielti/common-clj "30.69.70" :exclusions [datalevin datomic]]]
 
-  :aliases {"clean-ns"     ["clojure-lsp" "clean-ns" "--dry"] ;; check if namespaces are clean
-            "format"       ["clojure-lsp" "format" "--dry"] ;; check if namespaces are formatted
-            "diagnostics"  ["clojure-lsp" "diagnostics"]    ;; check if project has any diagnostics (clj-kondo findings)
-            "lint"         ["do" ["clean-ns"] ["format"] ["diagnostics"]] ;; check all above
-            "clean-ns-fix" ["clojure-lsp" "clean-ns"]       ;; Fix namespaces not clean
-            "format-fix"   ["clojure-lsp" "format"]         ;; Fix namespaces not formatted
-            "lint-fix"     ["do" ["clean-ns-fix"] ["format-fix"]]} ;; Fix both
+  :profiles {:dev {:resource-paths ["resources" "test/resources/"]
 
-  :injections [(require 'hashp.core)]
+                   :test-paths     ["test/unit" "test/integration" "test/helpers"]
 
-  :resource-paths ["resources" "test/resources/"]
+                   :dependencies   [[danlentz/clj-uuid "0.1.9"]]
 
-  :test-paths ["test/unit" "test/integration" "test/helpers"]
+                   :injections     [(require 'hashp.core)]
 
-  :repl-options {:init-ns rango.components}
+                   :repl-options   {:init-ns rango.components}
+
+                   :aliases        {"clean-ns"     ["clojure-lsp" "clean-ns" "--dry"] ;; check if namespaces are clean
+                                    "format"       ["clojure-lsp" "format" "--dry"] ;; check if namespaces are formatted
+                                    "diagnostics"  ["clojure-lsp" "diagnostics"] ;; check if project has any diagnostics (clj-kondo findings)
+                                    "lint"         ["do" ["clean-ns"] ["format"] ["diagnostics"]] ;; check all above
+                                    "clean-ns-fix" ["clojure-lsp" "clean-ns"] ;; Fix namespaces not clean
+                                    "format-fix"   ["clojure-lsp" "format"] ;; Fix namespaces not formatted
+                                    "lint-fix"     ["do" ["clean-ns-fix"] ["format-fix"]]}}} ;; Fix both
 
   :src-dirs ["src"]
 
