@@ -1,6 +1,5 @@
 (ns rango.adapters.student
   (:require [camel-snake-kebab.core :as csk]
-            [camel-snake-kebab.core :as csk]
             [java-time.api :as jt]
             [rango.models.student :as models.student]
             [rango.wire.datomic.student :as wire.datomic.student]
