@@ -32,3 +32,11 @@
    :name       name
    :class      (clojure.core/name class)
    :created-at (str created-at)})
+
+(s/defn postgresql->internal :- models.student/Student
+  [{:keys [id code name class created_at]}]
+  {:student/id         id
+   :student/code       code
+   :student/name       name
+   :student/class      (csk/->kebab-case-keyword class)
+   :student/created-at created_at})

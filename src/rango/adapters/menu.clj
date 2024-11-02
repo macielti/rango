@@ -33,3 +33,11 @@
    :reference-date (str reference-date)
    :description    description
    :created-at     (str created-at)})
+
+(s/defn postgresql->internal :- models.menu/Menu
+  [{:keys [] :as menu}]
+  {:menu/id             (:id menu)
+   :menu/reference-date (:reference_date menu)
+   :menu/description    (:description menu)
+   :menu/created-at     (:created_at menu)})
+

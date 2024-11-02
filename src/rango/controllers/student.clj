@@ -1,26 +1,30 @@
 (ns rango.controllers.student
-  (:require [datomic.api :as d]
-            [rango.db.datomic.student :as database.student]
+  (:require [pg.pool :as pool]
+            [rango.db.postgresql.student :as database.student]
             [rango.models.student :as models.student]
             [schema.core :as s]))
 
 (s/defn create! :- models.student/Student
   [student :- models.student/Student
-   datomic]
-  (if-let [student' (database.student/lookup-by-code (:student/code student) (d/db datomic))]
-    student'
-    (database.student/insert! student datomic)))
+   postgresql]
+  (pool/with-connection [database-conn postgresql]
+    (if-let [student' (database.student/lookup-by-code (:student/code student) database-conn)]
+      student'
+      (database.student/insert! student database-conn))))
 
 (s/defn fetch-all :- [models.student/Student]
-  [datomic]
-  (database.student/all (d/db datomic)))
+  [postgresql]
+  (pool/with-connection [database-conn postgresql]
+    (database.student/all database-conn)))
 
 (s/defn fetch-students-by-menu-reservations :- [models.student/Student]
   [menu-id :- s/Uuid
-   datomic]
-  (database.student/by-menu-reservation menu-id (d/db datomic)))
+   postgresql]
+  (pool/with-connection [database-conn postgresql]
+    (database.student/by-menu-reservation menu-id database-conn)))
 
 (s/defn retract!
   [student-id :- s/Uuid
-   datomic]
-  (database.student/retract! student-id datomic))
+   postgresql]
+  (pool/with-connection [database-conn postgresql]
+    (database.student/retract! student-id database-conn)))
