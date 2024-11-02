@@ -1,5 +1,5 @@
 (ns rango.db.postgresql.menu-test
-  (:require [clojure.test :refer :all]
+  (:require [clojure.test :refer [is testing]]
             [common-clj.integrant-components.postgresql :as postgresql]
             [common-clj.test.helper.schema :as test.helper.schema]
             [java-time.api :as jt]
