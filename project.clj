@@ -10,7 +10,7 @@
   :plugins [[com.github.clojure-lsp/lein-clojure-lsp "1.4.2"]]
 
   :dependencies [[org.clojure/clojure "1.11.1"]
-                 [net.clojars.macielti/common-clj "30.69.70" :exclusions [datalevin datomic]]]
+                 [net.clojars.macielti/common-clj "31.69.70"]]
 
   :profiles {:dev {:resource-paths ["resources" "test/resources/"]
 
@@ -34,4 +34,6 @@
 
   :aot :all
 
-  :main rango.components)
+  :main rango.components
+
+  :jvm-opts ["-Xmx100m"])
