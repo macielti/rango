@@ -1,6 +1,5 @@
 (ns rango.components
   (:require [common-clj.integrant-components.config]
-            [common-clj.integrant-components.datomic]
             [common-clj.integrant-components.postgresql]
             [common-clj.integrant-components.prometheus]
             [common-clj.integrant-components.routes]
