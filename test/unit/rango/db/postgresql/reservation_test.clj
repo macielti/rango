@@ -1,7 +1,7 @@
 (ns rango.db.postgresql.reservation-test
   (:require [clojure.test :refer [is testing]]
-            [common-clj.integrant-components.postgresql :as postgresql]
             [common-clj.test.helper.schema :as test.helper.schema]
+            [common-test-clj.component.postgresql-mock :as component.postgresql-mock]
             [java-time.api :as jt]
             [matcher-combinators.test :refer [match?]]
             [rango.db.postgresql.reservation :as database.reservation]
@@ -16,7 +16,7 @@
 
 (s/deftest insert-test
   (testing "Should insert a reservation"
-    (let [conn (postgresql/mocked-postgresql-conn)]
+    (let [conn (component.postgresql-mock/postgresql-conn-mock)]
       (is (match? {:reservation/id         uuid?
                    :reservation/student-id uuid?
                    :reservation/menu-id    uuid?
@@ -25,7 +25,7 @@
 
 (s/deftest by-menu-test
   (testing "Should insert a reservation"
-    (let [conn (postgresql/mocked-postgresql-conn)]
+    (let [conn (component.postgresql-mock/postgresql-conn-mock)]
       (database.reservation/insert! reservation conn)
       (database.reservation/insert! (test.helper.schema/generate models.reservation/Reservation {}) conn)
       (database.reservation/insert! (test.helper.schema/generate models.reservation/Reservation {}) conn)
@@ -38,7 +38,7 @@
 
 (s/deftest lookup-by-student-and-menu-test
   (testing "Should insert a reservation"
-    (let [conn (postgresql/mocked-postgresql-conn)]
+    (let [conn (component.postgresql-mock/postgresql-conn-mock)]
       (database.reservation/insert! reservation conn)
       (database.reservation/insert! (test.helper.schema/generate models.reservation/Reservation {}) conn)
       (database.reservation/insert! (test.helper.schema/generate models.reservation/Reservation {}) conn)

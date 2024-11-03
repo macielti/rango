@@ -10,13 +10,15 @@
   :plugins [[com.github.clojure-lsp/lein-clojure-lsp "1.4.2"]]
 
   :dependencies [[org.clojure/clojure "1.11.1"]
-                 [net.clojars.macielti/common-clj "31.69.70"]]
+                 [net.clojars.macielti/common-clj "32.69.70"]
+                 [net.clojars.macielti/postgresql-component "1.1.0"]]
 
   :profiles {:dev {:resource-paths ["resources" "test/resources/"]
 
                    :test-paths     ["test/unit" "test/integration" "test/helpers"]
 
-                   :dependencies   [[danlentz/clj-uuid "0.1.9"]]
+                   :dependencies   [[net.clojars.macielti/common-test-clj "1.0.0"]
+                                    [danlentz/clj-uuid "0.1.9"]]
 
                    :injections     [(require 'hashp.core)]
 
@@ -34,6 +36,4 @@
 
   :aot :all
 
-  :main rango.components
-
-  :jvm-opts ["-Xmx100m"])
+  :main rango.components)

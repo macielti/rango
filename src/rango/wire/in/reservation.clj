@@ -5,4 +5,4 @@
   {:reservation-id s/Str
    :student-code   s/Str})
 
-#_(s/defschema Reservation reservation)
+(s/defschema Reservation reservation)

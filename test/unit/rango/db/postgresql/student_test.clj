@@ -1,7 +1,7 @@
 (ns rango.db.postgresql.student-test
   (:require [clojure.test :refer [is testing]]
-            [common-clj.integrant-components.postgresql :as postgresql]
             [common-clj.test.helper.schema :as test.helper.schema]
+            [common-test-clj.component.postgresql-mock :as component.postgresql-mock]
             [java-time.api :as jt]
             [matcher-combinators.test :refer [match?]]
             [rango.db.postgresql.reservation :as database.reservation]
@@ -24,7 +24,7 @@
 
 (s/deftest insert-test
   (testing "Should insert a reservation"
-    (let [conn (postgresql/mocked-postgresql-conn)]
+    (let [conn (component.postgresql-mock/postgresql-conn-mock)]
       (is (match? {:student/id         uuid?
                    :student/code       string?
                    :student/name       string?
@@ -34,7 +34,7 @@
 
 (s/deftest lookup-by-code-test
   (testing "Should be able to query a student by code"
-    (let [conn (postgresql/mocked-postgresql-conn)]
+    (let [conn (component.postgresql-mock/postgresql-conn-mock)]
       (database.student/insert! student conn)
 
       (is (match? {:student/code student-code}
@@ -44,7 +44,7 @@
 
 (s/deftest all-test
   (testing "Should be able to query all students"
-    (let [conn (postgresql/mocked-postgresql-conn)]
+    (let [conn (component.postgresql-mock/postgresql-conn-mock)]
       (database.student/insert! student conn)
       (database.student/insert! (test.helper.schema/generate models.student/Student {}) conn)
       (database.student/insert! (test.helper.schema/generate models.student/Student {}) conn)
@@ -56,7 +56,7 @@
 
 (s/deftest by-menu-reservation-test
   (testing "Should be able to query students by menu reservation"
-    (let [conn (postgresql/mocked-postgresql-conn)]
+    (let [conn (component.postgresql-mock/postgresql-conn-mock)]
       (database.student/insert! student conn)
       (database.reservation/insert! (test.helper.schema/generate models.reservation/Reservation reservation) conn)
       (database.student/insert! (test.helper.schema/generate models.student/Student {}) conn)
@@ -67,7 +67,7 @@
 
 (s/deftest retract-test
   (testing "Should be able to retract a student"
-    (let [conn (postgresql/mocked-postgresql-conn)]
+    (let [conn (component.postgresql-mock/postgresql-conn-mock)]
       (database.student/insert! student conn)
 
       (is (match? {:deleted 1}

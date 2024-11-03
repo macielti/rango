@@ -18,4 +18,4 @@ WORKDIR /app
 
 COPY --from=buildStage /usr/src/app/target/rango-0.1.0-SNAPSHOT-standalone.jar  /app/rango.jar
 
-CMD ["java", "-jar", "-Xmx100m", "rango.jar"]
+CMD ["java", "-jar", "rango.jar"]
