@@ -1,12 +1,12 @@
 (ns rango.components
   (:require [common-clj.integrant-components.config]
-            [postgresql-component.core :as component.postgresql]
             [common-clj.integrant-components.prometheus]
             [common-clj.integrant-components.routes]
             [common-clj.integrant-components.service]
             [common-clj.porteiro.admin]
             [common-clj.porteiro.diplomat.http-server :as porteiro.diplomat.http-server]
             [integrant.core :as ig]
+            [postgresql-component.core :as component.postgresql]
             [rango.diplomat.http-server :as diplomat.http-server]
             [taoensso.timbre :as timbre])
   (:gen-class))

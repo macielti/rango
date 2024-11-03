@@ -1,7 +1,7 @@
 (ns rango.db.postgresql.menu-test
   (:require [clojure.test :refer [is testing]]
-            [common-test-clj.component.postgresql-mock :as component.postgresql-mock]
             [common-clj.test.helper.schema :as test.helper.schema]
+            [common-test-clj.component.postgresql-mock :as component.postgresql-mock]
             [java-time.api :as jt]
             [matcher-combinators.test :refer [match?]]
             [rango.db.postgresql.menu :as database.menu]
