@@ -1,6 +1,6 @@
 (ns rango.db.postgresql.menu-test
   (:require [clojure.test :refer [is testing]]
-            [common-clj.integrant-components.postgresql :as postgresql]
+            [common-test-clj.component.postgresql-mock :as component.postgresql-mock]
             [common-clj.test.helper.schema :as test.helper.schema]
             [java-time.api :as jt]
             [matcher-combinators.test :refer [match?]]
@@ -14,7 +14,7 @@
 
 (s/deftest insert-test
   (testing "Should insert a menu"
-    (let [conn (postgresql/mocked-postgresql-conn)]
+    (let [conn (component.postgresql-mock/postgresql-conn-mock)]
       (is (match? {:menu/description    string?
                    :menu/reference-date jt/local-date?
                    :menu/id             uuid?
@@ -23,7 +23,7 @@
 
 (s/deftest all-test
   (testing "Should return all menus"
-    (let [conn (postgresql/mocked-postgresql-conn)]
+    (let [conn (component.postgresql-mock/postgresql-conn-mock)]
       (database.menu/insert! (test.helper.schema/generate models.menu/Menu {}) conn)
       (database.menu/insert! (test.helper.schema/generate models.menu/Menu {}) conn)
       (database.menu/insert! (test.helper.schema/generate models.menu/Menu {}) conn)
@@ -35,7 +35,7 @@
 
 (s/deftest retract!-test
   (testing "Should return all menus"
-    (let [conn (postgresql/mocked-postgresql-conn)]
+    (let [conn (component.postgresql-mock/postgresql-conn-mock)]
       (database.menu/insert! menu conn)
       (database.menu/insert! (test.helper.schema/generate models.menu/Menu {}) conn)
       (database.menu/insert! (test.helper.schema/generate models.menu/Menu {}) conn)
