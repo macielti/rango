@@ -49,6 +49,8 @@
 
   :src-dirs ["src"]
 
+  :resource-paths ["resources"]
+
   :aot :all
 
   :main rango.components)
