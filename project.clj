@@ -7,13 +7,14 @@
   :license {:name "EPL-2.0 OR GPL-2.0-or-later WITH Classpath-exception-2.0"
             :url  "https://www.eclipse.org/legal/epl-2.0/"}
 
-  :plugins [[com.github.clojure-lsp/lein-clojure-lsp "1.4.2"]]
-
   :dependencies [[org.clojure/clojure "1.11.1"]
                  [net.clojars.macielti/common-clj "32.69.70"]
                  [net.clojars.macielti/postgresql-component "1.1.0"]]
 
-  :profiles {:dev {:resource-paths ["resources" "test/resources/"]
+  :profiles {:dev {:plugins        [[com.github.clojure-lsp/lein-clojure-lsp "1.4.2"]
+                                    [lein-shell "0.5.0"]]
+
+                   :resource-paths ["resources" "test/resources/"]
 
                    :test-paths     ["test/unit" "test/integration" "test/helpers"]
 
@@ -30,7 +31,21 @@
                                     "lint"         ["do" ["clean-ns"] ["format"] ["diagnostics"]] ;; check all above
                                     "clean-ns-fix" ["clojure-lsp" "clean-ns"] ;; Fix namespaces not clean
                                     "format-fix"   ["clojure-lsp" "format"] ;; Fix namespaces not formatted
-                                    "lint-fix"     ["do" ["clean-ns-fix"] ["format-fix"]]}}} ;; Fix both
+                                    "lint-fix"     ["do" ["clean-ns-fix"] ["format-fix"]] ;; Fix both
+
+                                    "native"
+                                    ["shell"
+                                     "native-image"
+                                     "--report-unsupported-elements-at-runtime"
+                                     "--no-server"
+                                     "--allow-incomplete-classpath"
+                                     "--initialize-at-build-time"
+                                     "--enable-url-protocols=http,https"
+                                     "-Dio.pedestal.log.defaultMetricsRecorder=nil"
+                                     "-jar" "./target/${:uberjar-name:-${:name}-${:version}-standalone.jar}"
+                                     "-H:+StaticExecutableWithDynamicLibC"
+                                     "-H:CCompilerOption=-pipe"
+                                     "-H:Name=./target/rango"]}}}
 
   :src-dirs ["src"]
 

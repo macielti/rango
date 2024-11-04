@@ -1,21 +1,24 @@
-FROM clojure as buildStage
+FROM ghcr.io/graalvm/graalvm-ce:22 as build
 
-LABEL stage="builder"
+RUN gu install native-image
+
+RUN curl -O https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein && \
+    chmod +x lein && \
+    mv lein /usr/bin/lein && \
+    lein upgrade
 
 COPY . /usr/src/app
 
 WORKDIR /usr/src/app
 
-RUN apt-get -y update
-
-RUN lein deps
-
 RUN lein uberjar
 
-FROM amazoncorretto:22-alpine
+RUN lein native
+
+FROM gcr.io/distroless/base:latest
 
 WORKDIR /app
 
-COPY --from=buildStage /usr/src/app/target/rango-0.1.0-SNAPSHOT-standalone.jar  /app/rango.jar
+COPY --from=build /usr/src/app/target/rango  /app/rango
 
-CMD ["java", "-jar", "rango.jar"]
+CMD ["./rango"]
