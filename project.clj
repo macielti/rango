@@ -9,7 +9,7 @@
 
   :dependencies [[org.clojure/clojure "1.11.1"]
                  [net.clojars.macielti/common-clj "32.69.70"]
-                 [net.clojars.macielti/postgresql-component "1.1.0"]]
+                 [net.clojars.macielti/postgresql-component "2.1.1"]]
 
   :profiles {:dev {:plugins        [[com.github.clojure-lsp/lein-clojure-lsp "1.4.2"]
                                     [lein-shell "0.5.0"]]
@@ -45,6 +45,7 @@
                                      "-jar" "./target/${:uberjar-name:-${:name}-${:version}-standalone.jar}"
                                      "-H:+StaticExecutableWithDynamicLibC"
                                      "-H:CCompilerOption=-pipe"
+                                     "-H:ReflectionConfigurationFiles=reflect-config.json"
                                      "-H:Name=./target/rango"]}}}
 
   :src-dirs ["src"]
