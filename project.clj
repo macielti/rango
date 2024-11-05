@@ -1,14 +1,14 @@
 (defproject rango "0.1.0-SNAPSHOT"
 
-  :description "FIXME: write description"
+  :description "Rango is a REST API for school canteen management"
 
-  :url "http://example.com/FIXME"
+  :url "https://github.com/macielti/rango"
 
   :license {:name "EPL-2.0 OR GPL-2.0-or-later WITH Classpath-exception-2.0"
             :url  "https://www.eclipse.org/legal/epl-2.0/"}
 
   :dependencies [[org.clojure/clojure "1.11.1"]
-                 [net.clojars.macielti/common-clj "32.69.70"]
+                 [net.clojars.macielti/common-clj "33.70.70"]
                  [net.clojars.macielti/postgresql-component "2.1.2"]]
 
   :profiles {:dev {:plugins        [[com.github.clojure-lsp/lein-clojure-lsp "1.4.2"]
