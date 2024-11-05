@@ -21,6 +21,7 @@
                    :dependencies   [[net.clojars.macielti/common-test-clj "1.0.0"]
                                     [danlentz/clj-uuid "0.1.9"]
                                     [hashp "0.2.2"]
+                                    [nubank/matcher-combinators "3.9.1"]
                                     [com.github.igrishaev/pg2-migration "0.1.18"]]
 
                    :injections     [(require 'hashp.core)]
