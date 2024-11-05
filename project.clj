@@ -19,7 +19,8 @@
                    :test-paths     ["test/unit" "test/integration" "test/helpers"]
 
                    :dependencies   [[net.clojars.macielti/common-test-clj "1.0.0"]
-                                    [danlentz/clj-uuid "0.1.9"]]
+                                    [danlentz/clj-uuid "0.1.9"]
+                                    [com.github.igrishaev/pg2-migration "0.1.18"]]
 
                    :injections     [(require 'hashp.core)]
 

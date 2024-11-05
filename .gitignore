@@ -16,3 +16,4 @@ pom.xml.asc
 /resources/config.edn
 /.clj-kondo/
 /.lsp/.cache/
+/resources/migration.config.edn
