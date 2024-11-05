@@ -1,6 +1,6 @@
 # Rango
 
-A Clojure library designed to ... well, that part is up to you.
+Rango is a REST API for school canteen management.
 
 ## Usage
 
