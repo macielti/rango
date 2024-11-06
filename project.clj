@@ -45,7 +45,7 @@
                                      "--no-server"
                                      "--allow-incomplete-classpath"
                                      "--initialize-at-build-time"
-                                     "--initialize-at-run-time=rango.components"
+                                     "--initialize-at-run-time=rango.components__init"
                                      "--enable-url-protocols=http,https"
                                      "--trace-object-instantiation=java.lang.Thread"
                                      "-Dio.pedestal.log.defaultMetricsRecorder=nil"
