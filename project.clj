@@ -8,8 +8,9 @@
             :url  "https://www.eclipse.org/legal/epl-2.0/"}
 
   :dependencies [[org.clojure/clojure "1.12.0"]
-                 [net.clojars.macielti/porteiro-component "0.1.1"]
-                 [net.clojars.macielti/common-clj "34.70.70"]
+                 [joda-time/joda-time "2.13.0"]
+                 [net.clojars.macielti/porteiro-component "0.1.1" :exclusions [amazonica]]
+                 [net.clojars.macielti/common-clj "34.70.70" :exclusions [amazonica]]
                  [net.clojars.macielti/postgresql-component "2.1.2"]]
 
   :profiles {:dev {:plugins        [[com.github.clojure-lsp/lein-clojure-lsp "1.4.2"]
