@@ -46,6 +46,7 @@
                                      "--allow-incomplete-classpath"
                                      "--initialize-at-build-time"
                                      "--enable-url-protocols=http,https"
+                                     "--trace-object-instantiation=java.lang.Thread"
                                      "-Dio.pedestal.log.defaultMetricsRecorder=nil"
                                      "-jar" "./target/${:uberjar-name:-${:name}-${:version}-standalone.jar}"
                                      "-H:+StaticExecutableWithDynamicLibC"
