@@ -7,7 +7,7 @@
   :license {:name "EPL-2.0 OR GPL-2.0-or-later WITH Classpath-exception-2.0"
             :url  "https://www.eclipse.org/legal/epl-2.0/"}
 
-  :dependencies [[org.clojure/clojure "1.11.1"]
+  :dependencies [[org.clojure/clojure "1.12.0"]
                  [net.clojars.macielti/porteiro-component "0.1.0"]
                  [net.clojars.macielti/common-clj "34.70.70"]
                  [net.clojars.macielti/postgresql-component "2.1.2"]]
