@@ -6,9 +6,10 @@
             [porteiro-component.admin-component :as porteiro.admin]
             [porteiro-component.diplomat.http-server :as porteiro.diplomat.http-server]
             [postgresql-component.core :as component.postgresql]
-            [rango.diplomat.http-server :as diplomat.http-server]
-            [taoensso.timbre :as timbre])
+            [rango.diplomat.http-server :as diplomat.http-server])
   (:gen-class))
+
+(alter-var-root #'clojure.core/*loading-verbosely* (constantly true))
 
 (def config
   {:common-clj.integrant-components.config/config   {:path "resources/config.edn"
@@ -22,10 +23,10 @@
                                                                   :postgresql (ig/ref ::component.postgresql/postgresql)}}})
 
 (defn start-system! []
-  (timbre/set-min-level! :info)
   (ig/init config))
 
-(def -main start-system!)
+(defn -main [& _args]
+  (start-system!))
 
 (def config-test
   (-> config

@@ -1,6 +1,15 @@
 [
   {
-    "name": "org.eclipse.jetty.server.ServerConnector",
+    "name": "rango.components__init",
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true
+  },
+  {
+    "name": "rango.components",
     "allDeclaredConstructors": true,
     "allPublicConstructors": true,
     "allDeclaredMethods": true,
