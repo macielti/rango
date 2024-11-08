@@ -9,8 +9,6 @@
             [rango.diplomat.http-server :as diplomat.http-server])
   (:gen-class))
 
-(alter-var-root #'clojure.core/*loading-verbosely* (constantly true))
-
 (def config
   {:common-clj.integrant-components.config/config   {:path "resources/config.edn"
                                                      :env  :prod}
