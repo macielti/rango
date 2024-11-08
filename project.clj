@@ -9,6 +9,7 @@
 
   :dependencies [[org.clojure/clojure "1.12.0"]
                  [joda-time/joda-time "2.13.0"]
+                 [net.clojars.macielti/new-relic-component "0.1.0" :exclusions [amazonica]]
                  [net.clojars.macielti/porteiro-component "0.2.1" :exclusions [amazonica]]
                  [net.clojars.macielti/common-clj "36.71.70" :exclusions [amazonica]]
                  [com.github.clj-easy/graal-build-time "1.0.5"]

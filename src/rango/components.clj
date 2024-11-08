@@ -2,6 +2,9 @@
   (:require [common-clj.integrant-components.config]
             [common-clj.integrant-components.routes]
             [common-clj.integrant-components.service]
+            [new-relic-component.core :as component.new-relic]
+            [common-clj.integrant-components.prometheus]
+            [common-clj.integrant-components.http-client]
             [integrant.core :as ig]
             [porteiro-component.admin-component :as porteiro.admin]
             [porteiro-component.diplomat.http-server :as porteiro.diplomat.http-server]
@@ -13,15 +16,20 @@
 (taoensso.timbre.tools.logging/use-timbre)
 
 (def config
-  {:common-clj.integrant-components.config/config   {:path "resources/config.edn"
-                                                     :env  :prod}
-   ::porteiro.admin/admin                           {:components {:config     (ig/ref :common-clj.integrant-components.config/config)
-                                                                  :postgresql (ig/ref ::component.postgresql/postgresql)}}
-   ::component.postgresql/postgresql                {:components {:config (ig/ref :common-clj.integrant-components.config/config)}}
-   :common-clj.integrant-components.routes/routes   {:routes (concat diplomat.http-server/routes porteiro.diplomat.http-server/routes)}
-   :common-clj.integrant-components.service/service {:components {:config     (ig/ref :common-clj.integrant-components.config/config)
-                                                                  :routes     (ig/ref :common-clj.integrant-components.routes/routes)
-                                                                  :postgresql (ig/ref ::component.postgresql/postgresql)}}})
+  {:common-clj.integrant-components.config/config           {:path "resources/config.edn"
+                                                             :env  :prod}
+   :common-clj.integrant-components.prometheus/prometheus   {:metrics []}
+   :common-clj.integrant-components.http-client/http-client {:components {:config     (ig/ref :common-clj.integrant-components.config/config)
+                                                                          :prometheus (ig/ref :common-clj.integrant-components.prometheus/prometheus)}}
+   ::component.new-relic/new-relic                          {:components {:config      (ig/ref :common-clj.integrant-components.config/config)
+                                                                          :http-client (ig/ref :common-clj.integrant-components.http-client/http-client)}}
+   ::porteiro.admin/admin                                   {:components {:config     (ig/ref :common-clj.integrant-components.config/config)
+                                                                          :postgresql (ig/ref ::component.postgresql/postgresql)}}
+   ::component.postgresql/postgresql                        {:components {:config (ig/ref :common-clj.integrant-components.config/config)}}
+   :common-clj.integrant-components.routes/routes           {:routes (concat diplomat.http-server/routes porteiro.diplomat.http-server/routes)}
+   :common-clj.integrant-components.service/service         {:components {:config     (ig/ref :common-clj.integrant-components.config/config)
+                                                                          :routes     (ig/ref :common-clj.integrant-components.routes/routes)
+                                                                          :postgresql (ig/ref ::component.postgresql/postgresql)}}})
 
 (defn start-system! []
   (ig/init config))
