@@ -1,5 +1,6 @@
 {:test {:service-name        "rango"
         :jwt-secret          "da3bf409-6b8e-448b-b7a7-025df2e2fa1a"
+        :new-relic-api-key   "random-access-key"
         :postgresql          {:host     "127.0.0.1"
                               :port     10150
                               :user     "test"
