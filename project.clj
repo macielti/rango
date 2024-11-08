@@ -10,14 +10,14 @@
   :dependencies [[org.clojure/clojure "1.12.0"]
                  [joda-time/joda-time "2.13.0"]
                  [net.clojars.macielti/porteiro-component "0.2.1" :exclusions [amazonica]]
-                 [net.clojars.macielti/common-clj "35.71.70" :exclusions [amazonica]]
+                 [net.clojars.macielti/common-clj "36.71.70" :exclusions [amazonica]]
                  [com.github.clj-easy/graal-build-time "1.0.5"]
                  [org.slf4j/slf4j-api "2.0.16"]
                  [ch.qos.logback/logback-classic "1.5.12"]
                  [org.clojure/tools.logging "1.3.0"]
                  [net.clojars.macielti/postgresql-component "2.2.2"]]
 
-  :profiles {:dev {:plugins        [[com.github.clojure-lsp/lein-clojure-lsp "1.4.2"]
+  :profiles {:dev {:plugins        [[com.github.clojure-lsp/lein-clojure-lsp "1.4.13"]
                                     [com.github.liquidz/antq "RELEASE"]
                                     [lein-shell "0.5.0"]]
 
@@ -25,7 +25,7 @@
 
                    :test-paths     ["test/unit" "test/integration" "test/helpers"]
 
-                   :dependencies   [[net.clojars.macielti/common-test-clj "1.0.0"]
+                   :dependencies   [[net.clojars.macielti/common-test-clj "1.1.0"]
                                     [danlentz/clj-uuid "0.2.0"]
                                     [hashp "0.2.2"]
                                     [nubank/matcher-combinators "3.9.1"]
@@ -47,8 +47,7 @@
 
   :resource-paths ["resources"]
 
-  :aot [rango.components]
-
+  :aot :all
   :jvm-opts ["-Dclojure.compiler.direct-linking=true"]
 
   :main rango.components)
