@@ -12,10 +12,8 @@
                  [net.clojars.macielti/porteiro-component "0.2.1" :exclusions [amazonica]]
                  [net.clojars.macielti/common-clj "36.71.70" :exclusions [amazonica]]
                  [com.github.clj-easy/graal-build-time "1.0.5"]
-                 [org.slf4j/slf4j-api "2.0.16"]
-                 [ch.qos.logback/logback-classic "1.5.12"]
-                 [org.clojure/tools.logging "1.3.0"]
-                 [net.clojars.macielti/postgresql-component "2.2.2"]]
+                 [net.clojars.macielti/postgresql-component "2.2.2"]
+                 [com.taoensso/timbre "6.6.1"]]
 
   :profiles {:dev {:plugins        [[com.github.clojure-lsp/lein-clojure-lsp "1.4.13"]
                                     [com.github.liquidz/antq "RELEASE"]
@@ -48,6 +46,5 @@
   :resource-paths ["resources"]
 
   :aot :all
-  :jvm-opts ["-Dclojure.compiler.direct-linking=true"]
 
   :main rango.components)

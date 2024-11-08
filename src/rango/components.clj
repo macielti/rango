@@ -6,8 +6,11 @@
             [porteiro-component.admin-component :as porteiro.admin]
             [porteiro-component.diplomat.http-server :as porteiro.diplomat.http-server]
             [postgresql-component.core :as component.postgresql]
-            [rango.diplomat.http-server :as diplomat.http-server])
+            [rango.diplomat.http-server :as diplomat.http-server]
+            [taoensso.timbre.tools.logging])
   (:gen-class))
+
+(taoensso.timbre.tools.logging/use-timbre)
 
 (def config
   {:common-clj.integrant-components.config/config   {:path "resources/config.edn"
