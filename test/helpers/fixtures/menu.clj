@@ -1,5 +1,5 @@
 (ns fixtures.menu
-  (:require [common-clj.test.helper.schema :as test.helper.schema]
+  (:require [common-test-clj.helpers.schema :as test.helper.schema]
             [java-time.api :as jt]
             [rango.models.menu :as models.menu]
             [rango.wire.in.menu :as wire.in.menu]))

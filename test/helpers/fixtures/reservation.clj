@@ -1,5 +1,5 @@
 (ns fixtures.reservation
-  (:require [common-clj.test.helper.schema :as test.helper.schema]
+  (:require [common-test-clj.helpers.schema :as test.helper.schema]
             [fixtures.menu]
             [fixtures.student]
             [rango.models.reservation :as models.reservation]))

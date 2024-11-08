@@ -1,5 +1,5 @@
 (ns fixtures.student
-  (:require [common-clj.test.helper.schema :as test.helper.schema]
+  (:require [common-test-clj.helpers.schema :as test.helper.schema]
             [rango.models.student :as models.student]
             [rango.wire.in.student :as wire.in.student]))
 
